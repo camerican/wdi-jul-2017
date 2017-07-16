@@ -1,0 +1,42 @@
+body {
+	margin: 0;
+	background-image: url(cat-background.jpg);
+}
+#logo {
+	width: 45px;
+	float:left;
+}
+header h2 {
+	display: inline-block;
+	float: left;
+}
+nav {
+	display: inline-block;
+	float: right;
+}
+nav ul {
+	list-style-type: none;
+}
+nav ul,
+header h2 {
+	margin: 0;
+	line-height: 55px;
+	vertical-align: middle;
+}
+nav li {
+	display: inline-block;
+	margin-left: 1.5em;
+}
+header {
+	background-color: #cc0044;
+	height: 55px;
+}
+header > .content {
+	width: 800px;
+	margin: 0 auto;
+}
+
+
+
+
+
