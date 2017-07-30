@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded",function(){
   elUsername = document.querySelector("input[name=username]");
   elEmail = document.querySelector("input[name=email]");
   elPassword = document.querySelector("input[name=password]");
+
+  buildButtons(document.querySelector("#button_area"));
   document.querySelector("form").addEventListener("submit",function(event){
     event.preventDefault(); //stop form submission (default behavior for a form)
     // password check
@@ -55,13 +57,36 @@ document.addEventListener("DOMContentLoaded",function(){
     console.log("Form Submitted");
   });
   // handle counters for bonus example
-  document.querySelectorAll(".counter button").forEach(function( el ) {
-    el.addEventListener("click",function(event){
-      console.log( event );
-    });
+  // document.querySelectorAll(".counter button").forEach(function( el ) {
+  //   el.addEventListener("click",function(event){
+  //     console.log( event );
+  //   });
+  // });
+  // Instead of attaching a click listener for each
+  // individual button, we'll attach a click listener
+  // for the parent container, and then check to see
+  // whether it was originating from the button
+  document.querySelector("#button_area").addEventListener("click",function(event){
+    console.log(event);
+    //we could use previousElementSibling
+    let elCount = event.target.parentNode.querySelector(".count");
+    elCount.innerText = parseInt(elCount.innerText) + 1;
   });
 });
 //document.querySelector("form").onsubmit(function(){});
-
+function buildButtons( element, buttons = 10 ) {
+  // wipe out the innerHTML
+  element.innerHTML = "";
+  // and rebuild our buttons
+  for(let i = 0; i<buttons; i++) {
+   element.innerHTML += `
+    <div class="counter">
+      <span class="count">0</span>
+      <button>+</button>
+    </div>
+  `; 
+  }
+  
+}
 //
 //Array.prototype.forEach.call(document.getElementsByClassName("counter"),function(el){ console.log( el ); });
